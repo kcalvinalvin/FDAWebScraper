@@ -1,0 +1,49 @@
+#!/bin/bash
+
+for year in {2015..2019}; do
+	python3 ./get_link.py $year |
+	grep -w accessdata |
+	awk -F'</a>' '{$1=$1}1' OFS='\n' |
+	awk -F'amp;' '{$1=$1}1' OFS='' |
+	awk -F'https://www.accessdata.fda.gov/scripts/medwatch/' '{$1=$1}1' OFS='' |
+	grep -vwE "(press|Snapshot|Snapshots|Annoucment|Information|FDA)" > file_$year
+done
+
+#for years 2011 ~ 2014 which have no patterns to the links
+#ok there is a pattern to the links but whatevs
+
+#2011
+python3 ./get_link_all.py http://wayback.archive-it.org/7993/20170111075028/http://www.fda.gov/Drugs/DevelopmentApprovalProcess/DrugInnovation/ucm285554.htm |
+grep -w accessdata |
+awk -F'</a>' '{$1=$1}1' OFS='\n' |
+awk -F'amp;' '{$1=$1}1' OFS='' |
+awk -F'http://wayback.archive-it.org/7993/20170111075028/' '{$1=$1}1' OFS='' |
+awk -F'https://www.accessdata.fda.gov/scripts/medwatch/' '{$1=$1}1' OFS='' |
+grep -vwE "(press|Snapshot|Snapshots|Annoucment|Information|FDA)" > file_2011
+
+#2012
+python3 ./get_link_all.py http://wayback.archive-it.org/7993/20170111075026/http://www.fda.gov/Drugs/DevelopmentApprovalProcess/DrugInnovation/ucm336115.htm |
+grep -w accessdata |
+awk -F'</a>' '{$1=$1}1' OFS='\n' |
+awk -F'amp;' '{$1=$1}1' OFS='' |
+awk -F'http://wayback.archive-it.org/7993/20170111075026/' '{$1=$1}1' OFS='' |
+awk -F'https://www.accessdata.fda.gov/scripts/medwatch/' '{$1=$1}1' OFS='' |
+grep -vwE "(press|Snapshot|Snapshots|Annoucment|Information|FDA)" > file_2012
+
+#2013
+python3 ./get_link_all.py http://wayback.archive-it.org/7993/20170111075024/http://www.fda.gov/Drugs/DevelopmentApprovalProcess/DrugInnovation/ucm381263.htm |
+grep -w accessdata |
+awk -F'</a>' '{$1=$1}1' OFS='\n' |
+awk -F'amp;' '{$1=$1}1' OFS='' |
+awk -F'http://wayback.archive-it.org/7993/20170111075024/' '{$1=$1}1' OFS='' |
+awk -F'https://www.accessdata.fda.gov/scripts/medwatch/' '{$1=$1}1' OFS='' |
+grep -vwE "(press|Snapshot|Snapshots|Annoucment|Information|FDA)" > file_2013
+
+#2014
+python3 ./get_link_all.py http://wayback.archive-it.org/7993/20170111075020/http://www.fda.gov/Drugs/DevelopmentApprovalProcess/DrugInnovation/ucm429247.htm |
+grep -w accessdata |
+awk -F'</a>' '{$1=$1}1' OFS='\n' |
+awk -F'amp;' '{$1=$1}1' OFS='' |
+awk -F'http://wayback.archive-it.org/7993/20170111075020/' '{$1=$1}1' OFS='' |
+awk -F'https://www.accessdata.fda.gov/scripts/medwatch/' '{$1=$1}1' OFS='' |
+grep -vwE "(press|Snapshot|Snapshots|Annoucment|Information|FDA)" > file_2014

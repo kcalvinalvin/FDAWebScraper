@@ -1,0 +1,15 @@
+#!/bin/bash
+
+file=$1
+
+counter=1
+while read line; do 
+python3 ./click.py "$line"
+cd /Users/calvin/Documents/python_projects/webScraping/csv
+xsv cat columns Drug* > file.csv
+mv file.csv $counter.csv
+rm Drug*
+counter=$((counter+1))
+cd /Users/calvin/Documents/python_projects/webScraping
+done < $file
+

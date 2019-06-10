@@ -1,0 +1,3 @@
+#!/bin/bash
+
+python3 tabledata.py $1 > /Users/calvin/Documents/python_projects/webScraping/csv/tabledata.csv

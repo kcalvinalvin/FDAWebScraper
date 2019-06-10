@@ -1,0 +1,11 @@
+#!/bin/bash
+
+file=$1
+
+counter=1
+while read line; do 
+python3 ./tabledata_test.py "$line" > /Users/calvin/Documents/python_projects/webScraping/csv/$counter.csv
+counter=$((counter+1))
+cd /Users/calvin/Documents/python_projects/webScraping
+done < $file
+
